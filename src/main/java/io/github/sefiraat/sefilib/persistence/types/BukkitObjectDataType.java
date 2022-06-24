@@ -7,11 +7,12 @@ import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class BukkitObjectDataType <T extends ConfigurationSerializable> implements PersistentDataType<byte[], T> {
+public class BukkitObjectDataType<T extends ConfigurationSerializable> implements PersistentDataType<byte[], T> {
 
     @Nonnull
     private final Class<T> clazz;
@@ -34,7 +35,7 @@ public class BukkitObjectDataType <T extends ConfigurationSerializable> implemen
 
     @Nonnull
     @Override
-    public byte[] toPrimitive(@Nonnull T bukkitObject, @Nonnull PersistentDataAdapterContext persistentDataAdapterContext) {
+    public byte[] toPrimitive(T bukkitObject, PersistentDataAdapterContext persistentDataAdapterContext) {
         try {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             BukkitObjectOutputStream bukkitStream = new BukkitObjectOutputStream(stream);
@@ -48,8 +49,9 @@ public class BukkitObjectDataType <T extends ConfigurationSerializable> implemen
 
     @Nonnull
     @Override
+    @ParametersAreNonnullByDefault
     @SuppressWarnings("unchecked")
-    public T fromPrimitive(@Nonnull byte[] byteArray, @Nonnull PersistentDataAdapterContext persistentDataAdapterContext) {
+    public T fromPrimitive(byte[] byteArray, PersistentDataAdapterContext persistentDataAdapterContext) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(byteArray);
             BukkitObjectInputStream bukkitStream = new BukkitObjectInputStream(stream);

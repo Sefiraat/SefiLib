@@ -1,4 +1,4 @@
-package io.github.sefiraat.sefilib.entities;
+package io.github.sefiraat.sefilib.entity;
 
 import io.github.sefiraat.sefilib.protections.Protections;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
@@ -81,15 +81,6 @@ public final class EntityUtils {
             return true;
         }
         return false;
-    }
-
-    /**
-     * SFW's Training dummy allows damage and exp gain for free, no thanks!
-     *
-     * @return True is target is a Training Dummy
-     */
-    public static boolean isTrainingDummy(@Nonnull Entity entity) {
-        return entity.getCustomName() != null && entity.getCustomName().equals("Dummy");
     }
 
     public static double getFacing(@Nonnull Entity testEntity, @Nonnull Entity compareEntity) {

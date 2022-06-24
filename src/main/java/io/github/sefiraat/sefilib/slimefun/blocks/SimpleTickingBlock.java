@@ -31,20 +31,46 @@ public abstract class SimpleTickingBlock extends SlimefunItem {
     protected final Map<Location, Boolean> firstTickMap = new HashMap<>();
 
     protected SimpleTickingBlock(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(itemGroup, item, recipeType, recipe);
-        addItemHandler(blockTicker());
+        this(itemGroup, item, recipeType, recipe, null);
     }
 
     protected SimpleTickingBlock(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, @Nullable ItemStack recipeOutput) {
         super(itemGroup, item, recipeType, recipe, recipeOutput);
+        addItemHandler(blockTicker());
     }
 
+    /**
+     * This method will fire the first time this block ticks, either when placed or after a
+     * server restart. Override this method if you need to grab from BlockStorage and cache
+     * the information like you normally would in newInstance if using a BlockMenuPreset
+     * @param block The {@link Block} being ticked
+     * @param slimefunItem The {@link SlimefunItem} that is stored in the block
+     * @param config The {@link Config} from BlockStorage at the time the block ticked
+     */
     protected abstract void onFirstTick(@Nonnull Block block, @Nonnull SlimefunItem slimefunItem, @Nonnull Config config);
 
+    /**
+     * This method will fire everytime the block ticks (including the the first tick, just
+     * after onFirstTick().
+     * @param block The {@link Block} being ticked
+     * @param slimefunItem The {@link SlimefunItem} that is stored in the block
+     * @param config The {@link Config} from BlockStorage at the time the block ticked
+     */
     protected abstract void onTick(@Nonnull Block block, @Nonnull SlimefunItem slimefunItem, @Nonnull Config config);
 
+    /**
+     * This method fires when the block is first placed
+     * @param event The {@link BlockPlaceEvent} passed from Bukkit via Slimefun
+     */
     protected abstract void onPlace(@Nonnull BlockPlaceEvent event);
 
+    /**
+     * This method will fire when the block is broken. Override this method if you need to
+     * wrap anything up or drop items etc.
+     * @param blockBreakEvent The {@link BlockBreakEvent} passed from Bukkit via Slimefun
+     * @param itemStack The {@link} ItemStack held by the player
+     * @param list The {@link List} of items about to be dropped
+     */
     protected abstract void onBreak(@Nonnull BlockBreakEvent blockBreakEvent, @Nonnull ItemStack itemStack, @Nonnull List<ItemStack> list);
 
     protected ItemHandler[] blockTicker() {

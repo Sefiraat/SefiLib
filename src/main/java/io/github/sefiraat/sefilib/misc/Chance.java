@@ -11,6 +11,16 @@ public final class Chance {
     /**
      * Tests a chance roll starting from 1 to upper
      *
+     * @param chance The chance to succeed between 0-1
+     * @return true if roll passes
+     */
+    public static boolean testChance(double chance) {
+        return ThreadLocalRandom.current().nextDouble() <= chance;
+    }
+
+    /**
+     * Tests a chance roll starting from 1 to upper
+     *
      * @param chance The number the roll must be lower than
      * @param upper  The highest possible number that could roll (inclusive)
      * @return true if roll passes

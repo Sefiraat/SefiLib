@@ -10,7 +10,6 @@ import java.util.List;
 
 public final class BlockUtils {
 
-
     /**
      * Credits : https://www.spigotmc.org/threads/getting-the-blockface-of-a-targeted-block.319181/
      * Gets the BlockFace of the block the player is currently targeting.
@@ -26,5 +25,4 @@ public final class BlockUtils {
         Block adjacentBlock = lastTwoTargetBlocks.get(0);
         return targetBlock.getFace(adjacentBlock);
     }
-
 }
