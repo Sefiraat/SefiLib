@@ -35,7 +35,7 @@ public class BukkitObjectDataType<T extends ConfigurationSerializable> implement
 
     @Nonnull
     @Override
-    public byte[] toPrimitive(T bukkitObject, PersistentDataAdapterContext persistentDataAdapterContext) {
+    public byte[] toPrimitive(@Nonnull T bukkitObject, @Nonnull PersistentDataAdapterContext context) {
         try {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             BukkitObjectOutputStream bukkitStream = new BukkitObjectOutputStream(stream);
@@ -51,7 +51,7 @@ public class BukkitObjectDataType<T extends ConfigurationSerializable> implement
     @Override
     @ParametersAreNonnullByDefault
     @SuppressWarnings("unchecked")
-    public T fromPrimitive(byte[] byteArray, PersistentDataAdapterContext persistentDataAdapterContext) {
+    public T fromPrimitive(byte[] byteArray, PersistentDataAdapterContext context) {
         try {
             ByteArrayInputStream stream = new ByteArrayInputStream(byteArray);
             BukkitObjectInputStream bukkitStream = new BukkitObjectInputStream(stream);

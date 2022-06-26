@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nullable;
 
-public class SefiSlimefunItem extends SlimefunItem {
+public class SefiSlimefunItem<T extends SefiSlimefunItem<T>> extends SlimefunItem {
 
     public SefiSlimefunItem(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
@@ -24,9 +24,13 @@ public class SefiSlimefunItem extends SlimefunItem {
         super(itemGroup, item, recipeType, recipe, recipeOutput);
     }
 
-    public SlimefunItem registerItem(SlimefunAddon addon) {
+    protected T getThis() {
+        return (T) this;
+    }
+
+    public T registerItem(SlimefunAddon addon) {
         this.register(addon);
-        return this;
+        return getThis();
     }
 
 }

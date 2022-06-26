@@ -27,11 +27,11 @@ public class Theme {
     @Nonnull
     private final String loreLine;
 
-    Theme(@Nonnull ChatColor color) {
+    public Theme(@Nonnull ChatColor color) {
         this(color, "");
     }
 
-    Theme(@Nonnull ChatColor color, @Nonnull String loreLine) {
+    public Theme(@Nonnull ChatColor color, @Nonnull String loreLine) {
         this.color = color;
         this.loreLine = loreLine;
     }
