@@ -9,6 +9,7 @@ import org.bukkit.Particle;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
@@ -219,6 +220,7 @@ public class Theme {
         return themeType.getColor() + string1 + ": " + Theme.PASSIVE + value;
     }
 
+    @Nonnull
     public String getLoreLine() {
         return loreLine;
     }
@@ -234,14 +236,15 @@ public class Theme {
      */
     @Nonnull
     @ParametersAreNonnullByDefault
-    public static ItemStack themedItemStack(Material material, Theme themeType, String name, String... lore) {
+    public static ItemStack themedItemStack(Material material, Theme themeType, String name, @Nullable List<String> lore) {
         ChatColor passiveColor = Theme.PASSIVE.getColor();
         List<String> finalLore = new ArrayList<>();
-        finalLore.add("");
-        for (String s : lore) {
-            finalLore.add(passiveColor + s);
+        if (lore != null) {
+            finalLore.add("");
+            for (String s : lore) {
+                finalLore.add(passiveColor + s);
+            }
         }
-        finalLore.add("");
         finalLore.add(applyThemeToString(Theme.CLICK_INFO, themeType.getLoreLine()));
         return new CustomItemStack(
             material,

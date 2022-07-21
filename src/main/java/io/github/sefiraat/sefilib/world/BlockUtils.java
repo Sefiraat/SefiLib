@@ -1,4 +1,4 @@
-package io.github.sefiraat.sefilib.block;
+package io.github.sefiraat.sefilib.world;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -9,6 +9,10 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public final class BlockUtils {
+
+    private BlockUtils() {
+        throw new IllegalStateException("Utility class");
+    }
 
     /**
      * Credits : https://www.spigotmc.org/threads/getting-the-blockface-of-a-targeted-block.319181/

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public abstract class SefiBlock<T extends SefiBlock<T>> extends SefiSlimefunItem<T> {
+public abstract class SefiBlock<T extends SefiSlimefunItem<T>> extends SefiSlimefunItem<T> {
 
     private boolean sync = true;
     private boolean allowBlockPlacers = false;
