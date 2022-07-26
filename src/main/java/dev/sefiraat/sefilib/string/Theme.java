@@ -14,13 +14,34 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Theme is used to coordinate the display of Items and Strings within your addon.
+ */
 public class Theme {
 
+    /**
+     * A Yellow warning theme.
+     */
     public static final Theme WARNING = new Theme(ChatColor.YELLOW, "Warning");
+    /**
+     * A Red error theme.
+     */
     public static final Theme ERROR = new Theme(ChatColor.RED, "Error");
+    /**
+     * A White notice theme.
+     */
     public static final Theme NOTICE = new Theme(ChatColor.WHITE, "Notice");
+    /**
+     * A Gray passive theme.
+     */
     public static final Theme PASSIVE = new Theme(ChatColor.GRAY);
+    /**
+     * A Green success theme.
+     */
     public static final Theme SUCCESS = new Theme(ChatColor.GREEN, "Success");
+    /**
+     * A Pale Yellow theme indicating where to click in the middle of a text.
+     */
     public static final Theme CLICK_INFO = new Theme(ChatColor.of("#e4ed32"), "Click here");
 
     @Nonnull
@@ -28,15 +49,32 @@ public class Theme {
     @Nonnull
     private final String loreLine;
 
+    /**
+     * Creates a new {@link Theme} without a lore line.
+     *
+     * @param color The color of this theme.
+     */
     public Theme(@Nonnull ChatColor color) {
         this(color, "");
     }
 
+    /**
+     * Creates a new {@link Theme}.
+     *
+     * @param color    The color of this theme.
+     * @param loreLine The lore line of this theme.
+     */
     public Theme(@Nonnull ChatColor color, @Nonnull String loreLine) {
         this.color = color;
         this.loreLine = loreLine;
     }
 
+    /**
+     * Returns the given string with the theme's color applied.
+     *
+     * @param string The string to color.
+     * @return The colored string.
+     */
     public String color(@Nonnull String string) {
         return this + string;
     }
@@ -64,11 +102,22 @@ public class Theme {
         return this.color + String.valueOf(value1) + ": " + Theme.PASSIVE + value2;
     }
 
+    /**
+     * Returns the {@link ChatColor} of this theme
+     *
+     * @return The {@link ChatColor} of this theme
+     */
     @Nonnull
     public ChatColor getColor() {
         return color;
     }
 
+    /**
+     * Gets the {@link org.bukkit.Particle.DustOptions} for this theme.
+     *
+     * @param size The size of the particle
+     * @return The {@link org.bukkit.Particle.DustOptions} for this theme.
+     */
     @Nonnull
     public Particle.DustOptions getDustOptions(float size) {
         return new Particle.DustOptions(
@@ -81,6 +130,11 @@ public class Theme {
         );
     }
 
+    /**
+     * Gets the color code for this theme as a string.
+     *
+     * @return The color code for this theme as a string.
+     */
     @Override
     @Nonnull
     public String toString() {
@@ -159,11 +213,12 @@ public class Theme {
      * Gets a SlimefunItemStack with a pre-populated lore and name with themed colors with parameters
      * for the plantable items/materials for seeds
      *
-     * @param id        The ID for the new {@link SlimefunItemStack}
-     * @param seedStack The vanilla {@link ItemStack} used to base the {@link SlimefunItemStack} on
-     * @param themeType The {@link Theme} {@link ChatColor} to apply to the {@link SlimefunItemStack} name
-     * @param name      The name to apply to the {@link SlimefunItemStack}
-     * @param lore      The lore lines for the {@link SlimefunItemStack}. Lore is book-ended with empty strings.
+     * @param id              The ID for the new {@link SlimefunItemStack}
+     * @param seedStack       The vanilla {@link ItemStack} used to base the {@link SlimefunItemStack} on
+     * @param themeType       The {@link Theme} {@link ChatColor} to apply to the {@link SlimefunItemStack} name
+     * @param name            The name to apply to the {@link SlimefunItemStack}
+     * @param lore            The lore lines for the {@link SlimefunItemStack}. Lore is book-ended with empty strings.
+     * @param validPlacements A list of valid placements for this seed.
      * @return Returns the new {@link SlimefunItemStack}
      */
     @Nonnull
@@ -220,6 +275,11 @@ public class Theme {
         return themeType.getColor() + string1 + ": " + Theme.PASSIVE + value;
     }
 
+    /**
+     * Returns the loreline for this theme without the color applied.
+     *
+     * @return Returns the loreline for this theme without the color applied.
+     */
     @Nonnull
     public String getLoreLine() {
         return loreLine;
@@ -236,7 +296,11 @@ public class Theme {
      */
     @Nonnull
     @ParametersAreNonnullByDefault
-    public static ItemStack themedItemStack(Material material, Theme themeType, String name, @Nullable List<String> lore) {
+    public static ItemStack themedItemStack(Material material,
+                                            Theme themeType,
+                                            String name,
+                                            @Nullable List<String> lore
+    ) {
         ChatColor passiveColor = Theme.PASSIVE.getColor();
         List<String> finalLore = new ArrayList<>();
         if (lore != null) {

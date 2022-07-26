@@ -150,6 +150,9 @@ public class MainFlexGroup extends FlexItemGroup {
         return this;
     }
 
+    /**
+     * Represents an icon in the {@link MainFlexGroup}
+     */
     public static class MenuItem {
         @Nullable
         private ItemStack item;
@@ -158,25 +161,52 @@ public class MainFlexGroup extends FlexItemGroup {
         @Nullable
         private ItemGroup itemGroup;
 
+        /**
+         * Creates a new MenuItem
+         *
+         * @param itemGroup The {@link ItemGroup} to be added. Accepts Flex, Nested and ItemGroup (DummyItemGroup)
+         *                  is preferable.
+         */
         private MenuItem(@Nonnull ItemGroup itemGroup) {
             this.itemGroup = itemGroup;
         }
 
+        /**
+         * Creates a new {@link MenuItem} with an {@link ItemStack} and a {@link ChestMenu.MenuClickHandler}
+         *
+         * @param item         The {@link ItemStack} to be displayed
+         * @param clickHandler The {@link ChestMenu.MenuClickHandler} to be executed when the item is clicked
+         */
         private MenuItem(@Nonnull ItemStack item, @Nonnull ChestMenu.MenuClickHandler clickHandler) {
             this.item = item;
             this.clickHandler = clickHandler;
         }
 
+        /**
+         * Returns the {@link ItemStack} that will be displayed to the players when in the guide.
+         *
+         * @return The {@link ItemStack} to be displayed
+         */
         @Nullable
         public ItemStack getItem() {
             return item;
         }
 
+        /**
+         * Returns the {@link ChestMenu.MenuClickHandler} for this {@link MenuItem}
+         *
+         * @return The {@link ChestMenu.MenuClickHandler} for this {@link MenuItem}
+         */
         @Nullable
         public ChestMenu.MenuClickHandler getClickHandler() {
             return clickHandler;
         }
 
+        /**
+         * Returns the {@link ItemGroup} of this {@link MenuItem}
+         *
+         * @return The {@link ItemGroup} of this {@link MenuItem}
+         */
         @Nullable
         public ItemGroup getItemGroup() {
             return itemGroup;

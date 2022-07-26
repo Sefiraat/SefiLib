@@ -5,22 +5,46 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class contains static methods for dealing with strings.
+ */
 public final class TextUtils {
 
     private TextUtils() {
         throw new IllegalStateException("Utility class");
     }
 
+    /**
+     * Converts the given string into one in Title Case.
+     *
+     * @param string The string to convert.
+     * @return The string in Title Case.
+     */
     @Nonnull
     public static String toTitleCase(@Nonnull String string) {
         return toTitleCase(string, true);
     }
 
+    /**
+     * Converts the given string into one in Title Case.
+     *
+     * @param string           The string to convert.
+     * @param delimiterToSpace Whether to replace the delimiter with a space.
+     * @return The string in Title Case.
+     */
     @Nonnull
     public static String toTitleCase(@Nonnull String string, boolean delimiterToSpace) {
         return toTitleCase(string, delimiterToSpace, " _'-/");
     }
 
+    /**
+     * Converts the given string into one in Title Case.
+     *
+     * @param string           The string to convert.
+     * @param delimiterToSpace Whether to replace the delimiter with a space.
+     * @param delimiters       The delimiters to replace.
+     * @return The string in Title Case.
+     */
     @Nonnull
     public static String toTitleCase(@Nonnull String string, boolean delimiterToSpace, @Nonnull String delimiters) {
         final StringBuilder builder = new StringBuilder();
@@ -78,12 +102,22 @@ public final class TextUtils {
         "supertechxter"
     );
 
+    /**
+     * Returns a random name from the EasterEgg list.
+     *
+     * @return A random name from the EasterEgg list.
+     */
     @Nonnull
     public static String getRandomEggName() {
         int rnd = ThreadLocalRandom.current().nextInt(0, EGG_NAMES.size());
         return EGG_NAMES.get(rnd);
     }
 
+    /**
+     * Returns the EasterEgg list.
+     *
+     * @return The EasterEgg list.
+     */
     @Nonnull
     public static List<String> getEggNames() {
         return EGG_NAMES;

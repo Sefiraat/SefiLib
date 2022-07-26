@@ -11,16 +11,32 @@ import org.bukkit.inventory.meta.ItemMeta;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+/**
+ * This class contains utility methods for working with {@link ItemStack}s.
+ */
 public final class GeneralItemStackUtils {
 
     private GeneralItemStackUtils() {
         throw new IllegalStateException("Utility class");
     }
 
+    /**
+     * Damages the item by the provided amount.
+     *
+     * @param itemStack The {@link ItemStack} to damage.
+     * @param amount    The amount of damage to deal.
+     */
     public static void damage(@Nonnull ItemStack itemStack, int amount) {
         damage(itemStack, null, amount);
     }
 
+    /**
+     * Damages the item by the provided amount.
+     *
+     * @param itemStack The {@link ItemStack} to damage.
+     * @param player    The {@link Player} who damaged the item.
+     * @param amount    The amount of damage to deal.
+     */
     public static void damage(@Nonnull ItemStack itemStack, @Nullable Player player, int amount) {
         ItemMeta itemMeta = itemStack.getItemMeta();
         if (itemMeta instanceof Damageable damageable) {
@@ -29,10 +45,23 @@ public final class GeneralItemStackUtils {
         }
     }
 
+    /**
+     * Repairs the item by the provided amount.
+     *
+     * @param itemStack The {@link ItemStack} to repair.
+     * @param amount    The amount of damage to repair.
+     */
     public static void repair(@Nonnull ItemStack itemStack, int amount) {
         repair(itemStack, null, amount);
     }
 
+    /**
+     * Repairs the item by the provided amount.
+     *
+     * @param itemStack The {@link ItemStack} to repair.
+     * @param player    The {@link Player} who repaired the item.
+     * @param amount    The amount of damage to repair.
+     */
     public static void repair(@Nonnull ItemStack itemStack, @Nullable Player player, int amount) {
         ItemMeta itemMeta = itemStack.getItemMeta();
         if (itemMeta instanceof Damageable damageable) {
@@ -41,16 +70,41 @@ public final class GeneralItemStackUtils {
         }
     }
 
+    /**
+     * Sets the damage of the item.
+     *
+     * @param itemStack The {@link ItemStack} to set the damage of.
+     * @param amount    The amount of damage to set.
+     */
     public static void setItemDamage(@Nonnull ItemStack itemStack, int amount) {
         setItemDamage(itemStack, null, amount);
     }
 
+    /**
+     * Sets the damage of the item.
+     *
+     * @param itemStack The {@link ItemStack} to set the damage of.
+     * @param player    The {@link Player} who set the damage of the item.
+     * @param amount    The amount of damage to set.
+     */
     public static void setItemDamage(@Nonnull ItemStack itemStack, @Nullable Player player, int amount) {
         ItemMeta itemMeta = itemStack.getItemMeta();
         setItemDamage(itemStack, itemMeta, player, amount);
     }
 
-    public static void setItemDamage(@Nonnull ItemStack itemStack, @Nonnull ItemMeta itemMeta, @Nullable Player player, int amount) {
+    /**
+     * Sets the damage of the item.
+     *
+     * @param itemStack The {@link ItemStack} to set the damage of.
+     * @param itemMeta  The {@link ItemMeta} of the item.
+     * @param player    The {@link Player} who set the damage of the item.
+     * @param amount    The amount of damage to set.
+     */
+    public static void setItemDamage(@Nonnull ItemStack itemStack,
+                                     @Nonnull ItemMeta itemMeta,
+                                     @Nullable Player player,
+                                     int amount
+    ) {
         // Meta is not damageable - currently not possible but possible in the future?
         if (!(itemMeta instanceof Damageable damageable)) {
             return;
@@ -89,11 +143,17 @@ public final class GeneralItemStackUtils {
         itemStack.setItemMeta(damageable);
     }
 
+    /**
+     * Gets a clone of an {@link ItemStack} with the provided amount.
+     *
+     * @param itemStack The {@link ItemStack} to clone.
+     * @param amount    The amount of the clone.
+     * @return A clone of the {@link ItemStack} with the provided amount.
+     */
     @Nonnull
     public static ItemStack getAsQuantity(@Nonnull ItemStack itemStack, int amount) {
         ItemStack clone = itemStack.clone();
         clone.setAmount(amount);
         return clone;
     }
-
 }

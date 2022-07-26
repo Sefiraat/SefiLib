@@ -1,4 +1,4 @@
-package dev.sefiraat.sefilib.world;
+package dev.sefiraat.sefilib.block;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -8,6 +8,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
+/**
+ * This class contains static methods for dealing with blocks.
+ */
 public final class BlockUtils {
 
     private BlockUtils() {

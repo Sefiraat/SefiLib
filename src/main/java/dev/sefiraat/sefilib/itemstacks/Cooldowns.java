@@ -8,6 +8,9 @@ import org.bukkit.persistence.PersistentDataHolder;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+/**
+ * This class contains a bunch of static methods that can be used to put and check {@link ItemStack}s cooldowns.
+ */
 public final class Cooldowns {
 
     private Cooldowns() {
@@ -17,7 +20,7 @@ public final class Cooldowns {
     /**
      * Adds a time to the provided {@link ItemStack} that can be checked
      * to see if the item is on cooldown.
-     * see {@link Cooldowns.isOnCooldown()}
+     * @see Cooldowns#isOnCooldown(NamespacedKey, ItemStack)
      *
      * @param key A {@link NamespacedKey} for this cooldown
      * @param itemStack The {@link ItemStack} to put on cooldown
@@ -31,7 +34,7 @@ public final class Cooldowns {
     /**
      * Adds a time to the provided {@link ItemStack} that can be checked
      * to see if the item is on cooldown.
-     * see {@link Cooldowns.isOnCooldown()}
+     * @see Cooldowns#isOnCooldown(NamespacedKey, ItemStack)
      *
      * @param key A {@link NamespacedKey} for this cooldown
      * @param itemStack The {@link ItemStack} to put on cooldown
@@ -46,7 +49,7 @@ public final class Cooldowns {
     /**
      * Adds a time to the provided {@link ItemStack} that can be checked
      * to see if the item is on cooldown.
-     * see {@link Cooldowns.isOnCooldown()}
+     * @see Cooldowns#isOnCooldown(NamespacedKey, ItemStack)
      *
      * @param key A {@link NamespacedKey} for this cooldown
      * @param holder The {@link PersistentDataHolder} to put on cooldown
@@ -60,7 +63,7 @@ public final class Cooldowns {
     /**
      * Adds a time to the provided {@link ItemStack} that can be checked
      * to see if the item is on cooldown.
-     * see {@link Cooldowns.isOnCooldown()}
+     * @see Cooldowns#isOnCooldown(NamespacedKey, ItemStack)
      *
      * @param key A {@link NamespacedKey} for this cooldown
      * @param holder The {@link PersistentDataHolder} to put on cooldown

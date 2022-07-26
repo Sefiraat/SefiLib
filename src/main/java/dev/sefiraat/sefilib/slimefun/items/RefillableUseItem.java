@@ -22,12 +22,21 @@ import java.util.List;
  */
 public abstract class RefillableUseItem extends LimitedUseItem {
 
+    /**
+     * Creates a new {@link RefillableUseItem}.
+     *
+     * @param group      The {@link ItemGroup} this item belongs to.
+     * @param item       The {@link SlimefunItemStack} that is used to create this item.
+     * @param recipeType The {@link RecipeType} of this item.
+     * @param recipe     The recipe of this item.
+     */
     protected RefillableUseItem(ItemGroup group, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(group, item, recipeType, recipe);
     }
 
     /**
      * Adds a single use back to the item
+     *
      * @param itemStack The {@link ItemStack} to refill
      */
     protected void refillItem(ItemStack itemStack) {
@@ -36,7 +45,8 @@ public abstract class RefillableUseItem extends LimitedUseItem {
 
     /**
      * Adds the requested number of uses back to the item
-     * @param itemStack The {@link ItemStack} to refill
+     *
+     * @param itemStack    The {@link ItemStack} to refill
      * @param refillAmount The number of uses to add
      */
     @ParametersAreNonnullByDefault
@@ -54,9 +64,10 @@ public abstract class RefillableUseItem extends LimitedUseItem {
     /**
      * Stolen from the Super class as it's private
      * Refreshes the item lore when adding a use back
+     *
      * @param itemStack The {@link ItemStack} that has been refilled.
-     * @param itemMeta The {@link ItemMeta} of the ItemStack.
-     * @param usesLeft The remaining uses after updating.
+     * @param itemMeta  The {@link ItemMeta} of the ItemStack.
+     * @param usesLeft  The remaining uses after updating.
      */
     @ParametersAreNonnullByDefault
     protected void updateLore(ItemStack itemStack, ItemMeta itemMeta, int usesLeft) {

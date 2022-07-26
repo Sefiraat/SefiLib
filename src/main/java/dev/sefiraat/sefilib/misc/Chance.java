@@ -2,6 +2,9 @@ package dev.sefiraat.sefilib.misc;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * This class contains basic utility methods for chance and rolls.
+ */
 public final class Chance {
 
     private Chance() {

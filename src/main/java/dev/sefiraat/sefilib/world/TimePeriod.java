@@ -26,23 +26,77 @@ import javax.annotation.Nonnull;
  * {@link #MOB_SPAWN_RAIN} The time period in which mobs COULD spawn in the overworld during rain
  */
 public enum TimePeriod {
+    /**
+     * When the sun is rising
+     */
     SUNRISE(23000, 23999),
+    /**
+     * When the sun is out
+     */
     DAY(24000, 11999),
+    /**
+     * When the sun is setting
+     */
     SUNSET(12000, 12999),
+    /**
+     * When the sun isn't out
+     */
     NIGHT(13000, 22999),
+    /**
+     * When the player and villagers will get out of their bed
+     */
     WAKE_UP(24000, 24000),
+    /**
+     * When the player can go to bed during rain
+     */
     BED_TIME_RAIN(12010, 23999),
+    /**
+     * When the player can go to bed during clear weather
+     */
     BED_TIME_CLEAR(12542, 23999),
+    /**
+     * When the moon hides past the horizon
+     */
     MOON_HIDDEN(167, 11833),
+    /**
+     * When the moon is visible in the sky
+     */
     MOON_VISIBLE(11834, 166),
+    /**
+     * When villagers can work during a day
+     */
     VILLAGER_WORK(2000, 8999),
+    /**
+     * When villagers can socialise (specifically cannot work)
+     */
     VILLAGER_SOCIALISE(9000, 11999),
+    /**
+     * When villagers path find to their beds and/or sleep
+     */
     VILLAGER_BED_TIME(12000, 23999),
+    /**
+     * When the light level begins to increase in clear weather
+     */
     SKY_LIGHT_WAX_CLEAR(22331, 23961),
+    /**
+     * When the light level begins to increase in rain
+     */
     SKY_LIGHT_WAX_RAIN(22331, 23992),
+    /**
+     * When the light level begins to decrease in clear weather
+     */
     SKY_LIGHT_WANE_CLEAR(12040, 13670),
+    /**
+     * When the light level begins to decrease in rain
+     */
     SKY_LIGHT_WANE_RAIN(12010, 13670),
+    /**
+     * The time period in which mobs COULD spawn in the overworld during clear weather
+     */
     MOB_SPAWN_CLEAR(13188, 22812),
+    /**
+     * The time period in which mobs COULD spawn in the overworld during rain
+     */
     MOB_SPAWN_RAIN(12969, 23031);
 
     private final long start;
@@ -53,10 +107,20 @@ public enum TimePeriod {
         this.end = end;
     }
 
+    /**
+     * Gets the start time of this time period
+     *
+     * @return The start time of this time period
+     */
     public long getStart() {
         return this.start;
     }
 
+    /**
+     * Gets the end time of this time period
+     *
+     * @return The end time of this time period
+     */
     public long getEnd() {
         return this.end;
     }
@@ -177,8 +241,8 @@ public enum TimePeriod {
     public static boolean naturalMobsCanSpawn(World world) {
         long time = world.getTime();
         return world.isClearWeather()
-            ? naturalMobsCanSpawn(time, false)
-            : naturalMobsCanSpawn(time, true);
+               ? naturalMobsCanSpawn(time, false)
+               : naturalMobsCanSpawn(time, true);
     }
 
     /**
@@ -190,8 +254,8 @@ public enum TimePeriod {
      */
     public static boolean naturalMobsCanSpawn(long time, boolean rain) {
         return rain
-            ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
-            : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
+               ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
+               : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
     }
 
     /**
