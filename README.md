@@ -3,11 +3,13 @@
 </p>
 
 # SefiLib
+
+[![javadoc](https://javadoc.io/badge2/dev.sefiraat/SefiLib/javadoc.svg?style=for-the-badge\&color=yellow)](https://javadoc.io/doc/dev.sefiraat/SefiLib)
+[![Maven Central](https://img.shields.io/maven-central/v/dev.sefiraat/SefiLib?color=aa\&style=for-the-badge)](https://search.maven.org/search?q=SefiLib)
+
 This library was made to store some of the more common functions, classes and tools I have used throughout all of my released addons. 
 I am sharing this with the commuinity in the hopes to help others with their own development, allowing devs to skip writing things I have already made in the past.
 
-Further information about usage and the project's java docs can be found at:
+Further information about usage can be found at https://sefiraat.dev
 
-https://docs.sefiraat.dev/sefilib/
 
-https://javadocs.sefilib.sefiraat.dev/
