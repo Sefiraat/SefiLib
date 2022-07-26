@@ -23,6 +23,9 @@ import java.util.List;
 /**
  * This class is designed to be the 'Main' item group for any given addon. Should only be used when you
  * both want FlexItemGroups within your 'main' group and also have them be Nested.
+ *
+ * @author Sefiraat
+ * @author ybw0014
  */
 public class MainFlexGroup extends FlexItemGroup {
 
