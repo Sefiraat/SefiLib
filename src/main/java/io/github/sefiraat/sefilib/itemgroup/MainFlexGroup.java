@@ -6,9 +6,12 @@ import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuide;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideMode;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is designed to be the 'Main' item group for any given addon. SHould only be used when you
+ * This class is designed to be the 'Main' item group for any given addon. Should only be used when you
  * both want FlexItemGroups within your 'main' group and also have them be Nested.
  */
 public class MainFlexGroup extends FlexItemGroup {
@@ -36,6 +39,8 @@ public class MainFlexGroup extends FlexItemGroup {
     @Nonnull
     private final String name;
     private final List<ItemGroup> groups = new ArrayList<>();
+    private final List<Pair<ItemStack, ChestMenu.MenuClickHandler>> prependItems = new ArrayList<>();
+    private final List<Pair<ItemStack, ChestMenu.MenuClickHandler>> appendItems = new ArrayList<>();
 
     /**
      * Creates a new MainFlexGroup
@@ -61,11 +66,11 @@ public class MainFlexGroup extends FlexItemGroup {
         final ChestMenu chestMenu = new ChestMenu(name);
 
         for (int slot : HEADER) {
-            chestMenu.addItem(slot, ChestMenuUtils.getBackground(), (player1, i1, itemStack, clickAction) -> false);
+            chestMenu.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
 
         for (int slot : FOOTER) {
-            chestMenu.addItem(slot, ChestMenuUtils.getBackground(), (player1, i1, itemStack, clickAction) -> false);
+            chestMenu.addItem(slot, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
         }
 
         chestMenu.setEmptySlotsClickable(false);
@@ -77,30 +82,46 @@ public class MainFlexGroup extends FlexItemGroup {
     private void setupPage(Player player, PlayerProfile profile, SlimefunGuideMode mode, ChestMenu menu) {
         for (int slot : FOOTER) {
             menu.replaceExistingItem(slot, ChestMenuUtils.getBackground());
-            menu.addMenuClickHandler(slot, ((player1, i, itemStack, clickAction) -> false));
+            menu.addMenuClickHandler(slot, ChestMenuUtils.getEmptyClickHandler());
         }
+
+        // Sound
+        menu.addMenuOpeningHandler(p -> p.playSound(p.getLocation(), Sound.ITEM_BOOK_PAGE_TURN, 1.0F, 1.0F));
 
         // Back
         menu.replaceExistingItem(
             GUIDE_BACK,
             ChestMenuUtils.getBackButton(
                 player,
-                Slimefun.getLocalization().getMessage("guide.back.guide")
+                "",
+                ChatColor.GRAY + Slimefun.getLocalization().getMessage(player, "guide.back.guide")
             )
         );
-        menu.addMenuClickHandler(GUIDE_BACK, (player1, slot, itemStack, clickAction) -> {
+        menu.addMenuClickHandler(GUIDE_BACK, (p, slot, itemStack, clickAction) -> {
             SlimefunGuide.openMainMenu(profile, mode, 1);
             return false;
         });
 
-        // Add groups
-        for (int i = 0; i < groups.size(); i++) {
-            final ItemGroup group = groups.get(i);
-            final int slot = 9 + i;
-            menu.replaceExistingItem(slot, group.getItem(player));
-            menu.addMenuClickHandler(slot, (player1, i1, itemStack1, clickAction) ->
+        int itemSlot = 9;
+
+        for (Pair<ItemStack, ChestMenu.MenuClickHandler> prependItemPair : prependItems) {
+            menu.replaceExistingItem(itemSlot, prependItemPair.getFirstValue());
+            menu.addMenuClickHandler(itemSlot, prependItemPair.getSecondValue());
+            itemSlot++;
+        }
+
+        for (ItemGroup group : groups) {
+            menu.replaceExistingItem(itemSlot, group.getItem(player));
+            menu.addMenuClickHandler(itemSlot, (p, slot, item, clickAction) ->
                 openPage(profile, group, mode, 1)
             );
+            itemSlot++;
+        }
+
+        for (Pair<ItemStack, ChestMenu.MenuClickHandler> appendItemPair : appendItems) {
+            menu.replaceExistingItem(itemSlot, appendItemPair.getFirstValue());
+            menu.addMenuClickHandler(itemSlot, appendItemPair.getSecondValue());
+            itemSlot++;
         }
     }
 
@@ -119,6 +140,32 @@ public class MainFlexGroup extends FlexItemGroup {
      */
     public MainFlexGroup addItemGroup(@Nonnull ItemGroup itemGroup) {
         groups.add(itemGroup);
+        return this;
+    }
+
+    /**
+     * Adds an {@link ItemStack} that will be displayed before all {@link ItemGroup}.
+     * Items are displayed in the order they are added.
+     * @param item The {@link ItemStack} to be added.
+     * @param handler The {@link ChestMenu.MenuClickHandler} of the item.
+     * @return Returns this group, for method chaining
+     */
+    @ParametersAreNonnullByDefault
+    public MainFlexGroup prependItem(ItemStack item, ChestMenu.MenuClickHandler handler) {
+        prependItems.add(new Pair<>(item, handler));
+        return this;
+    }
+
+    /**
+     * Adds an {@link ItemStack} that will be displayed after all {@link ItemGroup}.
+     * Items are displayed in the order they are added.
+     * @param item The {@link ItemStack} to be added.
+     * @param handler The {@link ChestMenu.MenuClickHandler} of the item.
+     * @return Returns this group, for method chaining
+     */
+    @ParametersAreNonnullByDefault
+    public MainFlexGroup appendItem(ItemStack item, ChestMenu.MenuClickHandler handler) {
+        appendItems.add(new Pair<>(item, handler));
         return this;
     }
 }
