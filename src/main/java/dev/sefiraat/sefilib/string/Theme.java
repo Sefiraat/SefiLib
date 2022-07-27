@@ -12,6 +12,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -158,6 +159,27 @@ public class Theme {
                                                             Theme themeType,
                                                             String name,
                                                             String... lore
+    ) {
+        return themedSlimefunItemStack(id, itemStack, themeType, name, Arrays.asList(lore));
+    }
+
+    /**
+     * Gets a SlimefunItemStack with a pre-populated lore and name with themed colors.
+     *
+     * @param id        The ID for the new {@link SlimefunItemStack}
+     * @param itemStack The vanilla {@link ItemStack} used to base the {@link SlimefunItemStack} on
+     * @param themeType The {@link Theme} {@link ChatColor} to apply to the {@link SlimefunItemStack} name
+     * @param name      The name to apply to the {@link SlimefunItemStack}
+     * @param lore      The lore lines for the {@link SlimefunItemStack}. Lore is book-ended with empty strings.
+     * @return Returns the new {@link SlimefunItemStack}
+     */
+    @Nonnull
+    @ParametersAreNonnullByDefault
+    public static SlimefunItemStack themedSlimefunItemStack(String id,
+                                                            ItemStack itemStack,
+                                                            Theme themeType,
+                                                            String name,
+                                                            List<String> lore
     ) {
         ChatColor passiveColor = Theme.PASSIVE.getColor();
         List<String> finalLore = new ArrayList<>();
