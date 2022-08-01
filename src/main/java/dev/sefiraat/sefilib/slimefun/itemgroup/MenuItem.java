@@ -24,7 +24,7 @@ public class MenuItem {
      * @param itemGroup The {@link ItemGroup} to be added. Accepts Flex, Nested and ItemGroup (DummyItemGroup)
      *                  is preferable.
      */
-    private MenuItem(@Nonnull ItemGroup itemGroup) {
+    public MenuItem(@Nonnull ItemGroup itemGroup) {
         this.itemGroup = itemGroup;
     }
 
@@ -34,7 +34,7 @@ public class MenuItem {
      * @param item         The {@link ItemStack} to be displayed
      * @param clickHandler The {@link ChestMenu.MenuClickHandler} to be executed when the item is clicked
      */
-    private MenuItem(@Nonnull ItemStack item, @Nonnull ChestMenu.MenuClickHandler clickHandler) {
+    public MenuItem(@Nonnull ItemStack item, @Nonnull ChestMenu.MenuClickHandler clickHandler) {
         this.item = item;
         this.clickHandler = clickHandler;
     }
