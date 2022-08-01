@@ -252,6 +252,30 @@ public class Theme {
                                                String[] lore,
                                                String[] validPlacements
     ) {
+        return Theme.themedSeed(id, seedStack, themeType, name, Arrays.asList(lore), Arrays.asList(validPlacements));
+    }
+
+    /**
+     * Gets a SlimefunItemStack with a pre-populated lore and name with themed colors with parameters
+     * for the plantable items/materials for seeds
+     *
+     * @param id              The ID for the new {@link SlimefunItemStack}
+     * @param seedStack       The vanilla {@link ItemStack} used to base the {@link SlimefunItemStack} on
+     * @param themeType       The {@link Theme} {@link ChatColor} to apply to the {@link SlimefunItemStack} name
+     * @param name            The name to apply to the {@link SlimefunItemStack}
+     * @param lore            The lore lines for the {@link SlimefunItemStack}. Lore is book-ended with empty strings.
+     * @param validPlacements A list of valid placements for this seed.
+     * @return Returns the new {@link SlimefunItemStack}
+     */
+    @Nonnull
+    @ParametersAreNonnullByDefault
+    public static SlimefunItemStack themedSeed(String id,
+                                               ItemStack seedStack,
+                                               Theme themeType,
+                                               String name,
+                                               List<String> lore,
+                                               List<String> validPlacements
+    ) {
         ChatColor passiveColor = Theme.PASSIVE.getColor();
         List<String> finalLore = new ArrayList<>();
         finalLore.add("");

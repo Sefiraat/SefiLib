@@ -64,6 +64,7 @@ public class LanguageManager {
             return config;
         } catch (IOException | InvalidConfigurationException e) {
             this.javaPlugin.getLogger().severe("Unable to find/load language file " + fileName);
+            this.javaPlugin.getLogger().severe(e.getMessage());
             return new YamlConfiguration();
         }
     }
@@ -77,9 +78,27 @@ public class LanguageManager {
      */
     @Nonnull
     public String getString(@Nonnull String path) {
+        return getString(path, new Object[0]);
+    }
+
+    /**
+     * Gets the string for the given path. Will fallback to the default language if the string is not available.
+     *
+     * @param path The path to the string.
+     * @param replacements The replacements to use for the strings.
+     * @return The string for the given path in the selected language or the default language if the
+     * string is not available.
+     */
+    @Nonnull
+    public String getString(@Nonnull String path, Object... replacements) {
         String string = selectedLanguage.getString(path);
         if (string == null) {
             string = defaultLanguage.getString(path);
+        }
+        if (string != null) {
+            for (int i = 0; i < replacements.length; i++) {
+                string = string.replace("{" + i + "}", replacements[i].toString());
+            }
         }
         return Objects.requireNonNullElse(string, "Localisation error");
     }
@@ -93,11 +112,59 @@ public class LanguageManager {
      */
     @Nonnull
     public List<String> getStringList(@Nonnull String path) {
-        List<String> string = selectedLanguage.getStringList(path);
-        if (string.isEmpty()) {
-            string = defaultLanguage.getStringList(path);
+        return getStringList(path, new Object[0]);
+    }
+
+    /**
+     * Gets the string list for the given path. Will fallback to the default language if the string is not available.
+     *
+     * @param path The path to the string.
+     * @param replacements The replacements to use for the strings.
+     * @return The string list for the given path in the selected language or the default language if the
+     * string is not available.
+     */
+    @Nonnull
+    public List<String> getStringList(@Nonnull String path, Object... replacements) {
+        List<String> strings = selectedLanguage.getStringList(path);
+        if (strings.isEmpty()) {
+            strings = defaultLanguage.getStringList(path);
         }
-        return Objects.requireNonNullElse(string, List.of("Localisation Error"));
+        if (strings.isEmpty()) {
+            strings = List.of("Localisation error");
+        } else {
+            strings = strings.stream().map(string -> {
+                for (int i = 0; i < replacements.length; i++) {
+                    string = string.replace("{" + i + "}", replacements[i].toString());
+                }
+                return string;
+            }).toList();
+        }
+        return strings;
+    }
+
+    /**
+     * Gets the string list for the given path. Will fallback to the default language if the string is not available.
+     *
+     * @param path The path to the string.
+     * @return The string list for the given path in the selected language or the default language if the
+     * string is not available.
+     */
+    @Nonnull
+    public String[] getStringArray(@Nonnull String path) {
+        return getStringArray(path, new Object[0]);
+    }
+
+    /**
+     * Gets the string list for the given path. Will fallback to the default language if the string is not available.
+     *
+     * @param path The path to the string.
+     * @param replacements The replacements to use for the strings.
+     * @return The string list for the given path in the selected language or the default language if the
+     * string is not available.
+     */
+    @Nonnull
+    public String[] getStringArray(@Nonnull String path, Object... replacements) {
+        return getStringList(path, replacements).toArray(new String[0]);
     }
 
     /**
