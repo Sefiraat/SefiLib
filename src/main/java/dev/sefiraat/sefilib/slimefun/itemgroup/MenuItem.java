@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Represents an icon in the {@link MainFlexGroup}
+ * Represents an icon in the {@link SimpleFlexGroup}
  */
 public class MenuItem {
     @Nullable
