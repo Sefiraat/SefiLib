@@ -26,7 +26,7 @@ public final class BlockUtils {
      * @return the BlockFace of the targeted block, or null if the targeted block is non-occluding.
      */
     @Nullable
-    public BlockFace getTargetedBlockFace(@Nonnull Player player) {
+    public static BlockFace getTargetedBlockFace(@Nonnull Player player) {
         List<Block> lastTwoTargetBlocks = player.getLastTwoTargetBlocks(null, 100);
         if (lastTwoTargetBlocks.size() != 2 || !lastTwoTargetBlocks.get(1).getType().isOccluding()) {
             return null;
@@ -42,7 +42,7 @@ public final class BlockUtils {
      * @param block The block to test
      * @return True if a player head (wall or not)
      */
-    public boolean isSkullBlock(@Nonnull Block block) {
+    public static boolean isSkullBlock(@Nonnull Block block) {
         return block.getType() == Material.PLAYER_HEAD || block.getType() == Material.PLAYER_WALL_HEAD;
     }
 }
