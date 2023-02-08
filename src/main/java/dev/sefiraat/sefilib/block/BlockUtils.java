@@ -1,5 +1,6 @@
 package dev.sefiraat.sefilib.block;
 
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -27,9 +28,21 @@ public final class BlockUtils {
     @Nullable
     public BlockFace getTargetedBlockFace(@Nonnull Player player) {
         List<Block> lastTwoTargetBlocks = player.getLastTwoTargetBlocks(null, 100);
-        if (lastTwoTargetBlocks.size() != 2 || !lastTwoTargetBlocks.get(1).getType().isOccluding()) return null;
+        if (lastTwoTargetBlocks.size() != 2 || !lastTwoTargetBlocks.get(1).getType().isOccluding()) {
+            return null;
+        }
         Block targetBlock = lastTwoTargetBlocks.get(1);
         Block adjacentBlock = lastTwoTargetBlocks.get(0);
         return targetBlock.getFace(adjacentBlock);
+    }
+
+    /**
+     * Returns true if the block is a Player Head or Wall Player Head
+     *
+     * @param block The block to test
+     * @return True if a player head (wall or not)
+     */
+    public boolean isSkullBlock(@Nonnull Block block) {
+        return block.getType() == Material.PLAYER_HEAD || block.getType() == Material.PLAYER_WALL_HEAD;
     }
 }
