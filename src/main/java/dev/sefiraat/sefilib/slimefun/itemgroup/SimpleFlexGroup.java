@@ -197,7 +197,7 @@ public class SimpleFlexGroup extends FlexItemGroup {
             GUIDE_BACK,
             ChestMenuUtils.getBackButton(
                 player,
-                Slimefun.getLocalization().getMessage(player, "guide.back.guide")
+                "&7" + Slimefun.getLocalization().getMessage(player, "guide.back.guide")
             )
         );
         menu.addMenuClickHandler(GUIDE_BACK, (p, slot, itemStack, clickAction) -> {
