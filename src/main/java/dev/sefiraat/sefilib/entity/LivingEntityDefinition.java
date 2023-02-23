@@ -626,7 +626,7 @@ public enum LivingEntityDefinition {
     }
 
     public boolean existsIn(SemanticVersion version) {
-        return this.lowestVersion.isAtLeast(version);
+        return version.isAtLeast(lowestVersion);
     }
 
     public boolean isCategorized(LivingEntityCategory category) {
