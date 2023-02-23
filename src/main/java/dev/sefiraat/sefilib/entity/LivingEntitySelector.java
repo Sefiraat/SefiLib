@@ -43,12 +43,20 @@ public class LivingEntitySelector {
         Set<LivingEntityDefinition> livingEntityDefinitions = new HashSet<>();
 
         // Categories
-        addCatInclusions(livingEntityDefinitions, matchType);
-        removeCatExclusions(livingEntityDefinitions, matchType);
+        if (!categoryInclusions.isEmpty()) {
+            addCatInclusions(livingEntityDefinitions, matchType);
+        }
+        if (!categoryExclusions.isEmpty()) {
+            removeCatExclusions(livingEntityDefinitions, matchType);
+        }
 
         // Specific Type overrides
-        livingEntityDefinitions.addAll(typeInclusions);
-        livingEntityDefinitions.removeAll(typeExclusions);
+        if (!typeInclusions.isEmpty()) {
+            livingEntityDefinitions.addAll(typeInclusions);
+        }
+        if (!typeExclusions.isEmpty()) {
+            livingEntityDefinitions.removeAll(typeExclusions);
+        }
 
         return livingEntityDefinitions;
     }

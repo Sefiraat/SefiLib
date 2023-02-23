@@ -14,26 +14,26 @@ import java.util.Set;
 
 public enum LivingEntityDefinition {
 
-    ALLAY(EntityType.ALLAY, Versions.VERSION_1_19,
+    ALLAY(Versions.VERSION_1_19,
           LivingEntityCategory.FLYING,
           LivingEntityCategory.PASSIVE,
           LivingEntityCategory.TAMEABLE
     ),
 
-    AXOLOTL(EntityType.AXOLOTL, Versions.VERSION_1_17,
+    AXOLOTL(Versions.VERSION_1_17,
             LivingEntityCategory.ANIMAL,
             LivingEntityCategory.AQUATIC,
             LivingEntityCategory.BREEDABLE,
             LivingEntityCategory.PASSIVE
     ),
 
-    BAT(EntityType.BAT, Versions.VERSION_1_14,
+    BAT(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.FLYING,
         LivingEntityCategory.PASSIVE
     ),
 
-    BEE(EntityType.BEE, Versions.VERSION_1_15,
+    BEE(Versions.VERSION_1_15,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.ARTHROPOD,
         LivingEntityCategory.BREEDABLE,
@@ -41,55 +41,55 @@ public enum LivingEntityDefinition {
         LivingEntityCategory.NEUTRAL
     ),
 
-    BLAZE(EntityType.BLAZE, Versions.VERSION_1_14,
+    BLAZE(Versions.VERSION_1_14,
           LivingEntityCategory.FLYING,
           LivingEntityCategory.HOSTILE,
           LivingEntityCategory.NETHER
     ),
 
-    CAT(EntityType.CAT, Versions.VERSION_1_14,
+    CAT(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.BREEDABLE,
         LivingEntityCategory.PASSIVE,
         LivingEntityCategory.TAMEABLE
     ),
 
-    CAVE_SPIDER(EntityType.CAVE_SPIDER, Versions.VERSION_1_14,
+    CAVE_SPIDER(Versions.VERSION_1_14,
                 LivingEntityCategory.ARTHROPOD,
                 LivingEntityCategory.NEUTRAL
     ),
 
-    CHICKEN(EntityType.CHICKEN, Versions.VERSION_1_14,
+    CHICKEN(Versions.VERSION_1_14,
             LivingEntityCategory.ANIMAL,
             LivingEntityCategory.BREEDABLE,
             LivingEntityCategory.FLYING,
             LivingEntityCategory.PASSIVE
     ),
 
-    COD(EntityType.COD, Versions.VERSION_1_14,
+    COD(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.AQUATIC,
         LivingEntityCategory.FISH,
         LivingEntityCategory.PASSIVE
     ),
 
-    COW(EntityType.COW, Versions.VERSION_1_14,
+    COW(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.BREEDABLE,
         LivingEntityCategory.PASSIVE
     ),
 
-    CREEPER(EntityType.CREEPER, Versions.VERSION_1_14,
+    CREEPER(Versions.VERSION_1_14,
             LivingEntityCategory.HOSTILE
     ),
 
-    DOLPHIN(EntityType.DOLPHIN, Versions.VERSION_1_14,
+    DOLPHIN(Versions.VERSION_1_14,
             LivingEntityCategory.ANIMAL,
             LivingEntityCategory.AQUATIC,
             LivingEntityCategory.NEUTRAL
     ),
 
-    DONKEY(EntityType.DONKEY, Versions.VERSION_1_14,
+    DONKEY(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.BREEDABLE,
            LivingEntityCategory.PASSIVE,
@@ -97,90 +97,90 @@ public enum LivingEntityDefinition {
            LivingEntityCategory.TAMEABLE
     ),
 
-    DROWNED(EntityType.DROWNED, Versions.VERSION_1_14,
+    DROWNED(Versions.VERSION_1_14,
             LivingEntityCategory.HOSTILE,
             LivingEntityCategory.UNDEAD
     ),
 
-    ELDER_GUARDIAN(EntityType.ELDER_GUARDIAN, Versions.VERSION_1_14,
+    ELDER_GUARDIAN(Versions.VERSION_1_14,
                    LivingEntityCategory.HOSTILE,
                    LivingEntityCategory.AQUATIC,
                    LivingEntityCategory.BOSS
     ),
 
-    ENDER_DRAGON(EntityType.ENDER_DRAGON, Versions.VERSION_1_14,
+    ENDER_DRAGON(Versions.VERSION_1_14,
                  LivingEntityCategory.HOSTILE,
                  LivingEntityCategory.FLYING,
                  LivingEntityCategory.END,
                  LivingEntityCategory.BOSS
     ),
 
-    ENDERMAN(EntityType.ENDERMAN, Versions.VERSION_1_14,
+    ENDERMAN(Versions.VERSION_1_14,
              LivingEntityCategory.NEUTRAL,
              LivingEntityCategory.END
     ),
 
-    ENDERMITE(EntityType.ENDERMITE, Versions.VERSION_1_14,
+    ENDERMITE(Versions.VERSION_1_14,
               LivingEntityCategory.ARTHROPOD,
               LivingEntityCategory.HOSTILE
     ),
 
-    EVOKER(EntityType.EVOKER, Versions.VERSION_1_14,
+    EVOKER(Versions.VERSION_1_14,
            LivingEntityCategory.HOSTILE,
            LivingEntityCategory.RAID,
            LivingEntityCategory.ILLAGER
     ),
 
-    FOX(EntityType.FOX, Versions.VERSION_1_14,
+    FOX(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.BREEDABLE,
         LivingEntityCategory.PASSIVE,
         LivingEntityCategory.TAMEABLE
     ),
 
-    FROG(EntityType.FROG, Versions.VERSION_1_19,
+    FROG(Versions.VERSION_1_19,
          LivingEntityCategory.ANIMAL,
          LivingEntityCategory.AQUATIC,
          LivingEntityCategory.BREEDABLE,
          LivingEntityCategory.PASSIVE
     ),
 
-    GHAST(EntityType.GHAST, Versions.VERSION_1_14,
+    GHAST(Versions.VERSION_1_14,
           LivingEntityCategory.HOSTILE,
           LivingEntityCategory.FLYING,
           LivingEntityCategory.NETHER
     ),
 
-    GIANT(EntityType.GIANT, Versions.VERSION_1_14,
+    GIANT(Versions.VERSION_1_14,
           LivingEntityCategory.HOSTILE,
           LivingEntityCategory.UNDEAD
     ),
 
-    GLOW_SQUID(EntityType.GLOW_SQUID, Versions.VERSION_1_17,
+    GLOW_SQUID(Versions.VERSION_1_17,
                LivingEntityCategory.ANIMAL,
                LivingEntityCategory.AQUATIC,
                LivingEntityCategory.PASSIVE
     ),
 
-    GOAT(EntityType.GOAT, Versions.VERSION_1_17,
+    GOAT(Versions.VERSION_1_17,
          LivingEntityCategory.ANIMAL,
          LivingEntityCategory.BREEDABLE,
          LivingEntityCategory.NEUTRAL
     ),
 
-    GUARDIAN(EntityType.GUARDIAN, Versions.VERSION_1_14,
+    GUARDIAN(Versions.VERSION_1_14,
              LivingEntityCategory.AQUATIC,
              LivingEntityCategory.HOSTILE
     ),
 
-    HOGLIN(EntityType.HOGLIN, Versions.VERSION_1_16,
+    HOGLIN(Versions.VERSION_1_16,
            LivingEntityCategory.BREEDABLE,
            LivingEntityCategory.HOSTILE,
            LivingEntityCategory.NETHER,
            LivingEntityCategory.PIGLIN
     ),
 
-    HORSE(EntityType.HORSE, Versions.VERSION_1_14,
+    HORSE(Versions.VERSION_1_14,
           LivingEntityCategory.ANIMAL,
           LivingEntityCategory.BREEDABLE,
           LivingEntityCategory.PASSIVE,
@@ -188,286 +188,287 @@ public enum LivingEntityDefinition {
           LivingEntityCategory.TAMEABLE
     ),
 
-    HUSK(EntityType.HUSK, Versions.VERSION_1_14,
+    HUSK(Versions.VERSION_1_14,
          LivingEntityCategory.HOSTILE,
          LivingEntityCategory.UNDEAD
     ),
 
-    ILLUSIONER(EntityType.ILLUSIONER, Versions.VERSION_1_14,
+    ILLUSIONER(Versions.VERSION_1_14,
                LivingEntityCategory.ILLAGER
     ),
 
-    IRON_GOLEM(EntityType.IRON_GOLEM, Versions.VERSION_1_14,
+    IRON_GOLEM(Versions.VERSION_1_14,
                LivingEntityCategory.GOLEM,
                LivingEntityCategory.NEUTRAL
     ),
 
-    LLAMA(EntityType.LLAMA, Versions.VERSION_1_14,
+    LLAMA(Versions.VERSION_1_14,
           LivingEntityCategory.ANIMAL,
           LivingEntityCategory.BREEDABLE,
           LivingEntityCategory.NEUTRAL,
           LivingEntityCategory.TAMEABLE
     ),
 
-    MAGMA_CUBE(EntityType.MAGMA_CUBE, Versions.VERSION_1_14,
+    MAGMA_CUBE(Versions.VERSION_1_14,
                LivingEntityCategory.HOSTILE,
                LivingEntityCategory.NETHER
     ),
 
-    MOOSHROOM(EntityType.MUSHROOM_COW, Versions.VERSION_1_14,
+    MUSHROOM_COW(Versions.VERSION_1_14,
               LivingEntityCategory.ANIMAL,
               LivingEntityCategory.BREEDABLE,
               LivingEntityCategory.PASSIVE
     ),
 
-    MULE(EntityType.MULE, Versions.VERSION_1_14,
+    MULE(Versions.VERSION_1_14,
          LivingEntityCategory.ANIMAL,
          LivingEntityCategory.PASSIVE,
          LivingEntityCategory.RIDEABLE,
          LivingEntityCategory.TAMEABLE
     ),
 
-    OCELOT(EntityType.OCELOT, Versions.VERSION_1_14,
+    OCELOT(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.BREEDABLE,
            LivingEntityCategory.PASSIVE,
            LivingEntityCategory.TAMEABLE
     ),
 
-    PANDA(EntityType.PANDA, Versions.VERSION_1_14,
+    PANDA(Versions.VERSION_1_14,
           LivingEntityCategory.ANIMAL,
           LivingEntityCategory.BREEDABLE,
           LivingEntityCategory.NEUTRAL
     ),
 
-    PARROT(EntityType.PARROT, Versions.VERSION_1_14,
+    PARROT(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.FLYING,
            LivingEntityCategory.PASSIVE,
            LivingEntityCategory.TAMEABLE
     ),
 
-    PHANTOM(EntityType.PHANTOM, Versions.VERSION_1_14,
+    PHANTOM(Versions.VERSION_1_14,
             LivingEntityCategory.FLYING,
             LivingEntityCategory.HOSTILE,
             LivingEntityCategory.UNDEAD
     ),
 
-    PIG(EntityType.PIG, Versions.VERSION_1_14,
+    PIG(Versions.VERSION_1_14,
         LivingEntityCategory.ANIMAL,
         LivingEntityCategory.BREEDABLE,
         LivingEntityCategory.PASSIVE,
         LivingEntityCategory.RIDEABLE
     ),
 
-    PIGLIN(EntityType.PIGLIN, Versions.VERSION_1_16,
+    PIGLIN(Versions.VERSION_1_16,
            LivingEntityCategory.NETHER,
            LivingEntityCategory.NEUTRAL,
            LivingEntityCategory.PIGLIN
     ),
 
-    PIGLIN_BRUTE(EntityType.PIGLIN_BRUTE, Versions.VERSION_1_16,
+    PIGLIN_BRUTE(Versions.VERSION_1_16,
                  LivingEntityCategory.HOSTILE,
                  LivingEntityCategory.NETHER,
                  LivingEntityCategory.PIGLIN
     ),
 
-    PILLAGER(EntityType.PILLAGER, Versions.VERSION_1_14,
+    PILLAGER(Versions.VERSION_1_14,
              LivingEntityCategory.HOSTILE,
              LivingEntityCategory.RAID,
              LivingEntityCategory.ILLAGER
     ),
 
-    POLAR_BEAR(EntityType.POLAR_BEAR, Versions.VERSION_1_14,
+    POLAR_BEAR(Versions.VERSION_1_14,
                LivingEntityCategory.ANIMAL,
                LivingEntityCategory.BREEDABLE,
                LivingEntityCategory.NEUTRAL
     ),
 
-    PUFFERFISH(EntityType.PUFFERFISH, Versions.VERSION_1_14,
+    PUFFERFISH(Versions.VERSION_1_14,
                LivingEntityCategory.ANIMAL,
                LivingEntityCategory.AQUATIC,
                LivingEntityCategory.FISH,
                LivingEntityCategory.PASSIVE
     ),
 
-    RABBIT(EntityType.RABBIT, Versions.VERSION_1_14,
+    RABBIT(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.BREEDABLE,
            LivingEntityCategory.PASSIVE
     ),
 
-    RAVAGER(EntityType.RAVAGER, Versions.VERSION_1_14,
+    RAVAGER(Versions.VERSION_1_14,
             LivingEntityCategory.HOSTILE,
             LivingEntityCategory.RAID,
             LivingEntityCategory.ILLAGER
     ),
 
-    SALMON(EntityType.SALMON, Versions.VERSION_1_14,
+    SALMON(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.AQUATIC,
            LivingEntityCategory.FISH,
            LivingEntityCategory.PASSIVE
     ),
 
-    SHEEP(EntityType.SHEEP, Versions.VERSION_1_14,
+    SHEEP(Versions.VERSION_1_14,
           LivingEntityCategory.ANIMAL,
           LivingEntityCategory.BREEDABLE,
           LivingEntityCategory.PASSIVE
     ),
 
-    SHULKER(EntityType.SHULKER, Versions.VERSION_1_14,
+    SHULKER(Versions.VERSION_1_14,
             LivingEntityCategory.HOSTILE,
             LivingEntityCategory.END
     ),
 
-    SILVERFISH(EntityType.SILVERFISH, Versions.VERSION_1_14,
+    SILVERFISH(Versions.VERSION_1_14,
                LivingEntityCategory.ARTHROPOD,
                LivingEntityCategory.HOSTILE
     ),
 
-    SKELETON_HORSE(EntityType.SKELETON_HORSE, Versions.VERSION_1_14,
+    SKELETON_HORSE(Versions.VERSION_1_14,
                    LivingEntityCategory.PASSIVE,
                    LivingEntityCategory.RIDEABLE,
                    LivingEntityCategory.TAMEABLE,
                    LivingEntityCategory.UNDEAD
     ),
 
-    SLIME(EntityType.SLIME, Versions.VERSION_1_14,
+    SLIME(Versions.VERSION_1_14,
           LivingEntityCategory.HOSTILE
     ),
 
-    SNOW_GOLEM(EntityType.SNOWMAN, Versions.VERSION_1_14,
+    SNOWMAN(Versions.VERSION_1_14,
                LivingEntityCategory.GOLEM,
                LivingEntityCategory.PASSIVE
     ),
 
-    SPIDER(EntityType.SPIDER, Versions.VERSION_1_14,
+    SPIDER(Versions.VERSION_1_14,
            LivingEntityCategory.ARTHROPOD,
            LivingEntityCategory.NEUTRAL
     ),
 
-    SQUID(EntityType.SQUID, Versions.VERSION_1_14,
+    SQUID(Versions.VERSION_1_14,
           LivingEntityCategory.ANIMAL,
           LivingEntityCategory.AQUATIC,
           LivingEntityCategory.PASSIVE
     ),
 
-    STRAY(EntityType.STRAY, Versions.VERSION_1_14,
+    STRAY(Versions.VERSION_1_14,
           LivingEntityCategory.HOSTILE,
           LivingEntityCategory.UNDEAD
     ),
 
-    STRIDER(EntityType.STRIDER, Versions.VERSION_1_16,
+    STRIDER(Versions.VERSION_1_16,
             LivingEntityCategory.BREEDABLE,
             LivingEntityCategory.NETHER,
             LivingEntityCategory.PASSIVE,
             LivingEntityCategory.RIDEABLE
     ),
 
-    TADPOLE(EntityType.TADPOLE, Versions.VERSION_1_19,
+    TADPOLE(Versions.VERSION_1_19,
             LivingEntityCategory.ANIMAL,
             LivingEntityCategory.AQUATIC,
             LivingEntityCategory.PASSIVE
     ),
 
-    TRADER_LLAMA(EntityType.TRADER_LLAMA, Versions.VERSION_1_14,
+    TRADER_LLAMA(Versions.VERSION_1_14,
                  LivingEntityCategory.ANIMAL,
                  LivingEntityCategory.TAMEABLE
     ),
 
-    TROPICAL_FISH(EntityType.TROPICAL_FISH, Versions.VERSION_1_14,
+    TROPICAL_FISH(Versions.VERSION_1_14,
                   LivingEntityCategory.ANIMAL,
                   LivingEntityCategory.AQUATIC,
                   LivingEntityCategory.FISH,
                   LivingEntityCategory.PASSIVE
     ),
 
-    TURTLE(EntityType.TURTLE, Versions.VERSION_1_14,
+    TURTLE(Versions.VERSION_1_14,
            LivingEntityCategory.ANIMAL,
            LivingEntityCategory.AQUATIC,
            LivingEntityCategory.BREEDABLE,
            LivingEntityCategory.PASSIVE
     ),
 
-    VEX(EntityType.VEX, Versions.VERSION_1_14,
+    VEX(Versions.VERSION_1_14,
         LivingEntityCategory.FLYING,
         LivingEntityCategory.HOSTILE,
         LivingEntityCategory.ILLAGER
     ),
 
-    VILLAGER(EntityType.VILLAGER, Versions.VERSION_1_14,
+    VILLAGER(Versions.VERSION_1_14,
              LivingEntityCategory.BREEDABLE,
              LivingEntityCategory.PASSIVE,
              LivingEntityCategory.TRADER,
              LivingEntityCategory.VILLAGER
     ),
 
-    VINDICATOR(EntityType.VINDICATOR, Versions.VERSION_1_14,
+    VINDICATOR(Versions.VERSION_1_14,
                LivingEntityCategory.HOSTILE,
                LivingEntityCategory.RAID,
                LivingEntityCategory.ILLAGER
     ),
 
-    WANDERING_TRADER(EntityType.WANDERING_TRADER, Versions.VERSION_1_14,
+    WANDERING_TRADER(Versions.VERSION_1_14,
                      LivingEntityCategory.TRADER,
                      LivingEntityCategory.VILLAGER,
                      LivingEntityCategory.PASSIVE
     ),
 
-    WARDEN(EntityType.WARDEN, Versions.VERSION_1_19,
-           LivingEntityCategory.HOSTILE
+    WARDEN(Versions.VERSION_1_19,
+           LivingEntityCategory.HOSTILE,
+           LivingEntityCategory.BOSS
     ),
 
-    WITCH(EntityType.WITCH, Versions.VERSION_1_14,
+    WITCH(Versions.VERSION_1_14,
           LivingEntityCategory.HOSTILE,
           LivingEntityCategory.RAID
     ),
 
-    WITHER(EntityType.WITHER, Versions.VERSION_1_14,
+    WITHER(Versions.VERSION_1_14,
            LivingEntityCategory.BOSS,
            LivingEntityCategory.FLYING,
            LivingEntityCategory.HOSTILE,
            LivingEntityCategory.UNDEAD
     ),
 
-    WITHER_SKELETON(EntityType.WITHER_SKELETON, Versions.VERSION_1_14,
+    WITHER_SKELETON(Versions.VERSION_1_14,
                     LivingEntityCategory.HOSTILE,
                     LivingEntityCategory.NETHER,
                     LivingEntityCategory.UNDEAD
     ),
 
-    WOLF(EntityType.WOLF, Versions.VERSION_1_14,
+    WOLF(Versions.VERSION_1_14,
          LivingEntityCategory.ANIMAL,
          LivingEntityCategory.BREEDABLE,
          LivingEntityCategory.NEUTRAL,
          LivingEntityCategory.TAMEABLE
     ),
 
-    ZOGLIN(EntityType.ZOGLIN, Versions.VERSION_1_16,
+    ZOGLIN(Versions.VERSION_1_16,
            LivingEntityCategory.HOSTILE,
            LivingEntityCategory.NETHER,
            LivingEntityCategory.PIGLIN,
            LivingEntityCategory.UNDEAD
     ),
 
-    ZOMBIE(EntityType.ZOMBIE, Versions.VERSION_1_14,
+    ZOMBIE(Versions.VERSION_1_14,
            LivingEntityCategory.HOSTILE,
            LivingEntityCategory.UNDEAD
     ),
 
-    ZOMBIE_HORSE(EntityType.ZOMBIE_HORSE, Versions.VERSION_1_14,
+    ZOMBIE_HORSE(Versions.VERSION_1_14,
                  LivingEntityCategory.NEUTRAL,
                  LivingEntityCategory.UNDEAD
     ),
 
-    ZOMBIE_VILLAGER(EntityType.ZOMBIE_VILLAGER, Versions.VERSION_1_14,
+    ZOMBIE_VILLAGER(Versions.VERSION_1_14,
                     LivingEntityCategory.HOSTILE,
                     LivingEntityCategory.VILLAGER,
                     LivingEntityCategory.UNDEAD
     ),
 
-    ZOMBIFIED_PIGLIN(EntityType.ZOMBIFIED_PIGLIN, Versions.VERSION_1_16,
+    ZOMBIFIED_PIGLIN(Versions.VERSION_1_16,
                      LivingEntityCategory.NETHER,
                      LivingEntityCategory.NEUTRAL,
                      LivingEntityCategory.PIGLIN,
@@ -476,7 +477,6 @@ public enum LivingEntityDefinition {
 
     private static final LivingEntityDefinition[] VALUES = values();
 
-    private final EntityType type;
     private final SemanticVersion lowestVersion;
     private final Set<LivingEntityCategory> categories;
     private boolean isFlying;
@@ -502,8 +502,7 @@ public enum LivingEntityDefinition {
     private boolean isVillager;
 
     @ParametersAreNonnullByDefault
-    LivingEntityDefinition(EntityType type, SemanticVersion lowestVersion, LivingEntityCategory... categories) {
-        this.type = type;
+    LivingEntityDefinition(SemanticVersion lowestVersion, LivingEntityCategory... categories) {
         this.lowestVersion = lowestVersion;
         this.categories = Sets.newHashSet(categories);
         for (LivingEntityCategory category : categories) {
@@ -534,7 +533,7 @@ public enum LivingEntityDefinition {
     }
 
     public EntityType getType() {
-        return type;
+        return EntityType.valueOf(this.name());
     }
 
     public SemanticVersion getLowestVersion() {
@@ -649,7 +648,7 @@ public enum LivingEntityDefinition {
     @Nullable
     public static LivingEntityDefinition fromType(EntityType type) {
         for (LivingEntityDefinition value : VALUES) {
-            if (value.type == type) {
+            if (value.name().equals(type.name())) {
                 return value;
             }
         }
