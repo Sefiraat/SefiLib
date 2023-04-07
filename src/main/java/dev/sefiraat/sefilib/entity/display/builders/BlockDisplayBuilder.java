@@ -1,6 +1,7 @@
 package dev.sefiraat.sefilib.entity.display.builders;
 
 import dev.sefiraat.sefilib.entity.display.DisplayGroup;
+import dev.sefiraat.sefilib.entity.display.DisplayInteractable;
 import org.bukkit.Location;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.BlockDisplay;
@@ -8,9 +9,14 @@ import org.bukkit.entity.EntityType;
 
 import javax.annotation.Nonnull;
 
-public class BlockDisplayBuilder extends DisplayBuilder<BlockDisplayBuilder> {
+public class BlockDisplayBuilder extends DisplayBuilder<BlockDisplayBuilder> implements DisplayInteractable {
 
     protected BlockData blockData;
+
+    public BlockDisplayBuilder setBlockData(@Nonnull BlockData blockData) {
+        this.blockData = blockData;
+        return this;
+    }
 
     public BlockDisplay build() {
         if (this.location == null) {
