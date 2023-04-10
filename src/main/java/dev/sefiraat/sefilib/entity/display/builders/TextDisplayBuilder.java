@@ -85,9 +85,6 @@ public class TextDisplayBuilder extends DisplayBuilder<TextDisplayBuilder> {
     }
 
     private TextDisplay generateDisplay(@Nonnull Location location) {
-        if (this.backgroundColor == null) {
-            throw new IllegalStateException("you must provide a Background Color for this Display");
-        }
         if (this.textAlignment == null) {
             throw new IllegalStateException("you must provide a TextAlignment for this Display");
         }
