@@ -23,7 +23,7 @@ public class TextDisplayBuilder extends DisplayBuilder<TextDisplayBuilder> {
     protected boolean hasSeeThrough;
     protected boolean defaultBackground;
     protected boolean hasDefaultBackground;
-    protected TextDisplay.TextAligment textAlignment;
+    protected TextDisplay.TextAlignment textAlignment;
 
     public TextDisplayBuilder setText(@Nullable String text) {
         this.text = text;
@@ -65,7 +65,7 @@ public class TextDisplayBuilder extends DisplayBuilder<TextDisplayBuilder> {
         return this;
     }
 
-    public TextDisplayBuilder setTextAlignment(@Nonnull TextDisplay.TextAligment textAlignment) {
+    public TextDisplayBuilder setTextAlignment(@Nonnull TextDisplay.TextAlignment textAlignment) {
         this.textAlignment = textAlignment;
         return this;
     }
