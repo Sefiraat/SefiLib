@@ -152,11 +152,15 @@ public class DisplayGroup {
         if (entity == null || entity.isDead() || !(entity instanceof Interaction display)) {
             return null;
         }
-        return fromTextDisplay(display);
+        return fromInteraction(display);
     }
 
-    @Nonnull
-    public static DisplayGroup fromTextDisplay(@Nonnull Interaction textDisplay) {
-        return new DisplayGroup(textDisplay);
+    @Nullable
+    public static DisplayGroup fromInteraction(@Nonnull Interaction interaction) {
+        if (PersistentDataAPI.has(interaction, KEY_LIST, StringListDataType.TYPE)) {
+            return new DisplayGroup(interaction);
+        } else {
+            return null;
+        }
     }
 }
