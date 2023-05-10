@@ -303,4 +303,51 @@ public enum TimePeriod {
         return !isLight(world);
     }
 
+    // Deprecated
+
+
+    @Deprecated
+    public static boolean isDay(Long time) {
+        return time < 13000 || time > 24000;
+    }
+
+    @Deprecated
+    public static boolean isNight(Long time) {
+        return !isDay(time);
+    }
+
+    /**
+     * Checks if the given time period would be active during the given time
+     *
+     * @param time       The long value denoting the chosen time
+     * @param timePeriod The {@link TimePeriod} to check against
+     * @return true if the TimePeriod is active
+     */
+    @Deprecated
+    public static boolean isActive(@Nonnull Long time, @Nonnull TimePeriod timePeriod) {
+        return time >= timePeriod.getStart() && time <= timePeriod.getEnd();
+    }
+
+    /**
+     * Checks if villagers would be awake during the provided time.
+     *
+     * @param time The long value describing the time to check
+     * @return true if villagers can be awake during the given time
+     */
+    public static boolean villagersAwake(@Nonnull Long time) {
+        return time >= WAKE_UP.getStart() && time <= VILLAGER_BED_TIME.getEnd();
+    }
+
+    /**
+     * Returns if the moon is still visible in the Sky during the specified time.
+     * This method assumes the world is Overworld.
+     *
+     * @param time The time to check.
+     * @return True if the moon is/would be out
+     */
+    public static boolean moonOut(@Nonnull Long time) {
+        return time >= MOON_VISIBLE.getStart() && time <= MOON_HIDDEN.getEnd();
+    }
+
+
 }
