@@ -99,6 +99,7 @@ public enum TimePeriod {
      */
     MOB_SPAWN_RAIN(12969, 23031);
 
+    public static final TimePeriod[] VALUES = TimePeriod.values();
     private final long start;
     private final long end;
 
@@ -126,6 +127,27 @@ public enum TimePeriod {
     }
 
     /**
+     * Set the time for a world to this {@link TimePeriod}.
+     * This sets the relative time!
+     *
+     * @param world The {@link World} to set the time in.
+     * @see World#setTime(long)
+     */
+    public void set(@Nonnull World world) {
+        world.setTime(start);
+    }
+
+    /**
+     * Set the full time for a world to this {@link TimePeriod}.
+     *
+     * @param world The {@link World} to set the time in.
+     * @see World#setFullTime(long)
+     */
+    public void setFull(@Nonnull World world) {
+        world.setFullTime(start);
+    }
+
+    /**
      * Checks if the time would be day in a 'normal' world
      *
      * @param world The {@link World} to get the time from to check against
@@ -141,7 +163,7 @@ public enum TimePeriod {
      * @param time The time to check against
      * @return true if the given time would be day in the overworld.
      */
-    public static boolean isDay(Long time) {
+    public static boolean isDay(long time) {
         return time < 13000 || time > 24000;
     }
 
@@ -161,7 +183,7 @@ public enum TimePeriod {
      * @param time The time to check against
      * @return true if the given time would be night in the overworld.
      */
-    public static boolean isNight(@Nonnull Long time) {
+    public static boolean isNight(long time) {
         return !isDay(time);
     }
 
@@ -183,7 +205,7 @@ public enum TimePeriod {
      * @param timePeriod The {@link TimePeriod} to check against
      * @return true if the TimePeriod is active
      */
-    public static boolean isActive(@Nonnull Long time, @Nonnull TimePeriod timePeriod) {
+    public static boolean isActive(long time, @Nonnull TimePeriod timePeriod) {
         return time >= timePeriod.getStart() && time <= timePeriod.getEnd();
     }
 
@@ -203,7 +225,7 @@ public enum TimePeriod {
      * @param time The long value describing the time to check
      * @return true if villagers can be awake during the given time
      */
-    public static boolean villagersAwake(@Nonnull Long time) {
+    public static boolean villagersAwake(long time) {
         return time >= WAKE_UP.getStart() && time <= VILLAGER_BED_TIME.getEnd();
     }
 
@@ -227,7 +249,7 @@ public enum TimePeriod {
      * @param time The time to check.
      * @return True if the moon is/would be out
      */
-    public static boolean moonOut(@Nonnull Long time) {
+    public static boolean moonOut(long time) {
         return time >= MOON_VISIBLE.getStart() && time <= MOON_HIDDEN.getEnd();
     }
 
@@ -238,11 +260,11 @@ public enum TimePeriod {
      * @param world The {@link World} to get the time and weather from
      * @return Returns true if mobs can spawn naturally at the current point in time
      */
-    public static boolean naturalMobsCanSpawn(World world) {
+    public static boolean naturalMobsCanSpawn(@Nonnull World world) {
         long time = world.getTime();
         return world.isClearWeather()
-               ? naturalMobsCanSpawn(time, false)
-               : naturalMobsCanSpawn(time, true);
+                ? naturalMobsCanSpawn(time, false)
+                : naturalMobsCanSpawn(time, true);
     }
 
     /**
@@ -254,8 +276,8 @@ public enum TimePeriod {
      */
     public static boolean naturalMobsCanSpawn(long time, boolean rain) {
         return rain
-               ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
-               : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
+                ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
+                : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
     }
 
     /**
@@ -280,4 +302,5 @@ public enum TimePeriod {
     public static boolean isDark(@Nonnull World world) {
         return !isLight(world);
     }
+
 }
