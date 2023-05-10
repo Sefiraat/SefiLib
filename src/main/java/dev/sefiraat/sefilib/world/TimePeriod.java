@@ -3,6 +3,7 @@ package dev.sefiraat.sefilib.world;
 import org.bukkit.World;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 
 /**
  * Time Periods that occur in the minecraft day with their start and end times
@@ -99,6 +100,7 @@ public enum TimePeriod {
      */
     MOB_SPAWN_RAIN(12969, 23031);
 
+    public static final TimePeriod[] VALUES = TimePeriod.values();
     private final long start;
     private final long end;
 
@@ -126,6 +128,55 @@ public enum TimePeriod {
     }
 
     /**
+     * Set the time for a world to this {@link TimePeriod}.
+     * This sets the relative time!
+     *
+     * @param world The {@link World} to set the time in.
+     * @see World#setTime(long)
+     */
+    public void set(@Nonnull World world) {
+        world.setTime(start);
+    }
+
+    /**
+     * Set the full time for a world to this {@link TimePeriod}.
+     *
+     * @param world The {@link World} to set the time in.
+     * @see World#setFullTime(long)
+     */
+    public void setFull(@Nonnull World world) {
+        world.setFullTime(start);
+    }
+
+    /**
+     * Get a {@link TimePeriod} of a current time.
+     *
+     * @param time The world time.
+     * @return If present, a {@link TimePeriod}.
+     * @see World#getTime()
+     */
+    public static Optional<TimePeriod> of(long time) {
+        for (TimePeriod period : VALUES) {
+            if (time >= period.start && time <= period.getEnd()) {
+                return Optional.of(period);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    /**
+     * Get a {@link TimePeriod} of a current time in the {@link World}.
+     *
+     * @param world The world to check the time in.
+     * @return If present, a {@link TimePeriod}.
+     * @see World#getTime()
+     */
+    public static Optional<TimePeriod> of(@Nonnull World world) {
+        return of(world.getTime());
+    }
+
+    /**
      * Checks if the time would be day in a 'normal' world
      *
      * @param world The {@link World} to get the time from to check against
@@ -141,7 +192,7 @@ public enum TimePeriod {
      * @param time The time to check against
      * @return true if the given time would be day in the overworld.
      */
-    public static boolean isDay(Long time) {
+    public static boolean isDay(long time) {
         return time < 13000 || time > 24000;
     }
 
@@ -161,7 +212,7 @@ public enum TimePeriod {
      * @param time The time to check against
      * @return true if the given time would be night in the overworld.
      */
-    public static boolean isNight(@Nonnull Long time) {
+    public static boolean isNight(long time) {
         return !isDay(time);
     }
 
@@ -183,7 +234,7 @@ public enum TimePeriod {
      * @param timePeriod The {@link TimePeriod} to check against
      * @return true if the TimePeriod is active
      */
-    public static boolean isActive(@Nonnull Long time, @Nonnull TimePeriod timePeriod) {
+    public static boolean isActive(long time, @Nonnull TimePeriod timePeriod) {
         return time >= timePeriod.getStart() && time <= timePeriod.getEnd();
     }
 
@@ -203,7 +254,7 @@ public enum TimePeriod {
      * @param time The long value describing the time to check
      * @return true if villagers can be awake during the given time
      */
-    public static boolean villagersAwake(@Nonnull Long time) {
+    public static boolean villagersAwake(long time) {
         return time >= WAKE_UP.getStart() && time <= VILLAGER_BED_TIME.getEnd();
     }
 
@@ -227,7 +278,7 @@ public enum TimePeriod {
      * @param time The time to check.
      * @return True if the moon is/would be out
      */
-    public static boolean moonOut(@Nonnull Long time) {
+    public static boolean moonOut(long time) {
         return time >= MOON_VISIBLE.getStart() && time <= MOON_HIDDEN.getEnd();
     }
 
@@ -238,11 +289,11 @@ public enum TimePeriod {
      * @param world The {@link World} to get the time and weather from
      * @return Returns true if mobs can spawn naturally at the current point in time
      */
-    public static boolean naturalMobsCanSpawn(World world) {
+    public static boolean naturalMobsCanSpawn(@Nonnull World world) {
         long time = world.getTime();
         return world.isClearWeather()
-               ? naturalMobsCanSpawn(time, false)
-               : naturalMobsCanSpawn(time, true);
+                ? naturalMobsCanSpawn(time, false)
+                : naturalMobsCanSpawn(time, true);
     }
 
     /**
@@ -254,8 +305,8 @@ public enum TimePeriod {
      */
     public static boolean naturalMobsCanSpawn(long time, boolean rain) {
         return rain
-               ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
-               : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
+                ? time >= MOB_SPAWN_RAIN.getStart() && time <= MOB_SPAWN_RAIN.getEnd()
+                : time >= MOB_SPAWN_CLEAR.getStart() && time <= MOB_SPAWN_CLEAR.getEnd();
     }
 
     /**
@@ -280,4 +331,52 @@ public enum TimePeriod {
     public static boolean isDark(@Nonnull World world) {
         return !isLight(world);
     }
+
+    // Deprecated
+
+
+    @Deprecated
+    public static boolean isDay(Long time) {
+        return time < 13000 || time > 24000;
+    }
+
+    @Deprecated
+    public static boolean isNight(Long time) {
+        return !isDay(time);
+    }
+
+    /**
+     * Checks if the given time period would be active during the given time
+     *
+     * @param time       The long value denoting the chosen time
+     * @param timePeriod The {@link TimePeriod} to check against
+     * @return true if the TimePeriod is active
+     */
+    @Deprecated
+    public static boolean isActive(@Nonnull Long time, @Nonnull TimePeriod timePeriod) {
+        return time >= timePeriod.getStart() && time <= timePeriod.getEnd();
+    }
+
+    /**
+     * Checks if villagers would be awake during the provided time.
+     *
+     * @param time The long value describing the time to check
+     * @return true if villagers can be awake during the given time
+     */
+    public static boolean villagersAwake(@Nonnull Long time) {
+        return time >= WAKE_UP.getStart() && time <= VILLAGER_BED_TIME.getEnd();
+    }
+
+    /**
+     * Returns if the moon is still visible in the Sky during the specified time.
+     * This method assumes the world is Overworld.
+     *
+     * @param time The time to check.
+     * @return True if the moon is/would be out
+     */
+    public static boolean moonOut(@Nonnull Long time) {
+        return time >= MOON_VISIBLE.getStart() && time <= MOON_HIDDEN.getEnd();
+    }
+
+
 }
