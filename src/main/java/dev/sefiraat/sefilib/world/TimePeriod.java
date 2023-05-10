@@ -3,6 +3,7 @@ package dev.sefiraat.sefilib.world;
 import org.bukkit.World;
 
 import javax.annotation.Nonnull;
+import java.util.Optional;
 
 /**
  * Time Periods that occur in the minecraft day with their start and end times
@@ -145,6 +146,34 @@ public enum TimePeriod {
      */
     public void setFull(@Nonnull World world) {
         world.setFullTime(start);
+    }
+
+    /**
+     * Get a {@link TimePeriod} of a current time.
+     *
+     * @param time The world time.
+     * @return If present, a {@link TimePeriod}.
+     * @see World#getTime()
+     */
+    public static Optional<TimePeriod> of(long time) {
+        for (TimePeriod period : VALUES) {
+            if (time >= period.start && time <= period.getEnd()) {
+                return Optional.of(period);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    /**
+     * Get a {@link TimePeriod} of a current time in the {@link World}.
+     *
+     * @param world The world to check the time in.
+     * @return If present, a {@link TimePeriod}.
+     * @see World#getTime()
+     */
+    public static Optional<TimePeriod> of(@Nonnull World world) {
+        return of(world.getTime());
     }
 
     /**
