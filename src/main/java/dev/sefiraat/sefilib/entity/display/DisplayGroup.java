@@ -9,6 +9,8 @@ import org.bukkit.entity.Display;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Interaction;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataHolder;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class DisplayGroup {
+public class DisplayGroup implements PersistentDataHolder {
 
     // todo Don't like this - can we offload key to the plugin
     private static final NamespacedKey KEY_LIST = new NamespacedKey("sefilib", "child_display_list");
@@ -162,5 +164,11 @@ public class DisplayGroup {
         } else {
             return null;
         }
+    }
+
+    @Nonnull
+    @Override
+    public PersistentDataContainer getPersistentDataContainer() {
+        return parentDisplay.getPersistentDataContainer();
     }
 }
