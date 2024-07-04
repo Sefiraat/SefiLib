@@ -1,15 +1,17 @@
 package dev.sefiraat.sefilib.slimefun;
 
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.GitHubBuildsUpdater;
-import org.bstats.bukkit.Metrics;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
+import java.text.MessageFormat;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.OverridingMethodsMustInvokeSuper;
-import java.text.MessageFormat;
+
+import org.bstats.bukkit.Metrics;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.updater.BlobBuildUpdater;
 
 public abstract class SimpleSlimefunAddon extends JavaPlugin implements SlimefunAddon {
 
@@ -56,15 +58,8 @@ public abstract class SimpleSlimefunAddon extends JavaPlugin implements Slimefun
     }
 
     private void tryUpdate() {
-        if (isAutoUpdate() && getDescription().getVersion().startsWith("DEV")) {
-            String updateLocation = MessageFormat.format(
-                "{0}/{1}/{2}",
-                getGitHubUsername(),
-                getGitHubRepoName(),
-                getGitHubBranchName()
-            );
-            GitHubBuildsUpdater updater = new GitHubBuildsUpdater(this, getFile(), updateLocation);
-            updater.start();
+        if (isAutoUpdate() && getDescription().getVersion().startsWith("Dev")) {
+            new BlobBuildUpdater(this, getFile(), getGitHubRepoName(), "Dev").start();
         }
     }
 
