@@ -1,12 +1,14 @@
 package dev.sefiraat.sefilib.slimefun.blocks;
 
-import io.github.bakedlibs.dough.blocks.BlockPosition;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import java.util.logging.Logger;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
@@ -14,21 +16,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.logging.Logger;
+import io.github.bakedlibs.dough.blocks.BlockPosition;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+
+import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
 
 /**
  * This block will, when placed, register it's placing player as its owner.
  * It will also check for the owner after a restart.
- *
- * @param <T> The type of {@link SlimefunItem} that is used to create this block.
  */
-public abstract class OwnedBlock<T extends SefiBlock<T>> extends SefiBlock<T> {
+public abstract class OwnedBlock extends SlimefunItem {
 
     private static final String OWNER_KEY = "block_owner";
 
@@ -66,15 +67,6 @@ public abstract class OwnedBlock<T extends SefiBlock<T>> extends SefiBlock<T> {
                          @Nullable ItemStack recipeOutput
     ) {
         super(itemGroup, item, recipeType, recipe, recipeOutput);
-    }
-
-    /**
-     * Returns this object
-     *
-     * @return this object
-     */
-    public T getThis() {
-        return (T) this;
     }
 
     /**

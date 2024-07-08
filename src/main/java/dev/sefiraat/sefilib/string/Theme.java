@@ -1,19 +1,22 @@
 package dev.sefiraat.sefilib.string;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import net.md_5.bungee.api.ChatColor;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+
+import net.md_5.bungee.api.ChatColor;
 
 /**
  * A Theme is used to coordinate the display of Items and Strings within your addon.
@@ -214,6 +217,27 @@ public class Theme {
                                                             Theme themeType,
                                                             String name,
                                                             String... lore
+    ) {
+        return themedSlimefunItemStack(id, material, themeType, name, Arrays.asList(lore));
+    }
+
+    /**
+     * Gets a SlimefunItemStack with a pre-populated lore and name with themed colors.
+     *
+     * @param id        The ID for the new {@link SlimefunItemStack}
+     * @param material  The vanilla {@link Material} used to base the {@link SlimefunItemStack} on
+     * @param themeType The {@link Theme} {@link ChatColor} to apply to the {@link SlimefunItemStack} name
+     * @param name      The name to apply to the {@link SlimefunItemStack}
+     * @param lore      The lore lines for the {@link SlimefunItemStack}. Lore is book-ended with empty strings.
+     * @return Returns the new {@link SlimefunItemStack}
+     */
+    @Nonnull
+    @ParametersAreNonnullByDefault
+    public static SlimefunItemStack themedSlimefunItemStack(String id,
+                                                            Material material,
+                                                            Theme themeType,
+                                                            String name,
+                                                            List<String> lore
     ) {
         ChatColor passiveColor = Theme.PASSIVE.getColor();
         List<String> finalLore = new ArrayList<>();
